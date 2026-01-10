@@ -11,6 +11,13 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'accent-teal': "var(--accent-teal)",
+        'card-bg': "var(--card-bg)",
+        'header-bg': "var(--header-bg)",
+      },
+      fontFamily: {
+        'mackinac': ['P22 Mackinac Pro', 'serif'],
+        'roboto': ['Roboto Flex', 'sans-serif'],
       },
     },
   },
