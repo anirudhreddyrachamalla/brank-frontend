@@ -55,6 +55,11 @@ export interface CalendlyModalProps {
   url?: string;
 }
 
+export interface ProModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
 // Analytics types
 export interface LLMComparison {
   llm: string;

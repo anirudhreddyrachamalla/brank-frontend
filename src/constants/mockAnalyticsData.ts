@@ -11,9 +11,7 @@ export const mockAnalyticsData = {
     comparisons: [
       { llm: 'ChatGPT', value: 92, icon: '/images/LLMs/chatgpt.svg' },
       { llm: 'Gemini', value: 92, icon: '/images/LLMs/gemini.svg' },
-      { llm: 'Claude', value: 92, icon: '/images/LLMs/claude.svg' },
       { llm: 'Grok', value: 92, icon: '/images/LLMs/grok.svg' },
-      { llm: 'Deepseek', value: 92, icon: '/images/LLMs/deepseek.svg' },
       { llm: 'Perplexity', value: 92, icon: '/images/LLMs/perplexity.svg' },
     ],
   },
@@ -22,9 +20,7 @@ export const mockAnalyticsData = {
     comparisons: [
       { llm: 'ChatGPT', value: 32, icon: '/images/LLMs/chatgpt.svg' },
       { llm: 'Gemini', value: 1, icon: '/images/LLMs/gemini.svg' },
-      { llm: 'Claude', value: 12, icon: '/images/LLMs/claude.svg' },
       { llm: 'Grok', value: 54, icon: '/images/LLMs/grok.svg' },
-      { llm: 'Deepseek', value: 23, icon: '/images/LLMs/deepseek.svg' },
       { llm: 'Perplexity', value: 0, icon: '/images/LLMs/perplexity.svg' },
     ],
   },
@@ -68,8 +64,8 @@ export const mockAnalyticsData = {
         ],
       },
       {
-        name: 'Deepseek',
-        icon: '/images/LLMs/deepseek.svg',
+        name: 'Perplexity',
+        icon: '/images/LLMs/perplexity.svg',
         total: 169,
         subtitle: 'Showing top sources by relevance',
         sources: [
@@ -100,9 +96,7 @@ export const mockAnalyticsData = {
       llms: [
         { name: 'ChatGPT', icon: '/images/LLMs/chatgpt.svg', rank: 1 },
         { name: 'Gemini', icon: '/images/LLMs/gemini.svg', rank: 2 },
-        { name: 'Claude', icon: '/images/LLMs/claude.svg', rank: 3 },
         { name: 'Grok', icon: '/images/LLMs/grok.svg', rank: 4 },
-        { name: 'Deepseek', icon: '/images/LLMs/deepseek.svg', rank: 5 },
         { name: 'Perplexity', icon: '/images/LLMs/perplexity.svg', rank: 6 },
       ],
     },

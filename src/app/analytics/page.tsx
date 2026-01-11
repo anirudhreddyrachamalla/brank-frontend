@@ -1,11 +1,12 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import Image from 'next/image';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { MetricCard } from '@/components/ui/MetricCard';
+import { ProModal } from '@/components/ui';
 import { ComparisonCard } from '@/components/analytics/ComparisonCard';
 import { CitationCard } from '@/components/analytics/CitationCard';
 import { mockAnalyticsData } from '@/constants/mockAnalyticsData';
@@ -13,6 +14,11 @@ import { mockAnalyticsData } from '@/constants/mockAnalyticsData';
 function AnalyticsContent() {
   const searchParams = useSearchParams();
   const brandName = searchParams.get('brand') || 'Unknown Brand';
+  const [isRankingProModalOpen, setIsRankingProModalOpen] = useState(false);
+
+  const shouldShowRankingProButton = (llmName: string) => {
+    return llmName === 'Grok' || llmName === 'Perplexity';
+  };
 
   return (
     <div className="min-h-screen bg-black">
@@ -165,9 +171,18 @@ function AnalyticsContent() {
                           {llm.name}
                         </span>
                       </div>
-                      <span className="text-white text-sm font-normal">
-                        #{llm.rank}
-                      </span>
+                      {shouldShowRankingProButton(llm.name) ? (
+                        <button
+                          onClick={() => setIsRankingProModalOpen(true)}
+                          className="px-4 py-1.5 bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] text-black text-xs font-medium hover:opacity-90 transition-opacity rounded-md"
+                        >
+                          Pro
+                        </button>
+                      ) : (
+                        <span className="text-white text-sm font-normal">
+                          #{llm.rank}
+                        </span>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -220,6 +235,11 @@ function AnalyticsContent() {
       </main>
 
       <Footer />
+      
+      <ProModal
+        isOpen={isRankingProModalOpen}
+        onClose={() => setIsRankingProModalOpen(false)}
+      />
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button, CalendlyModal } from '@/components/ui';
 
 export default function Header() {
@@ -11,7 +12,7 @@ export default function Header() {
     <>
       <header className="w-full bg-black px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2 cursor-pointer group">
             <Image 
               src="/images/brank-logo.svg"
               alt="Brank Logo"
@@ -19,10 +20,10 @@ export default function Header() {
               height={20}
               className="text-white"
             />
-            <span className="text-white text-base font-normal">
-              Brank-AI
+            <span className="text-white text-base font-normal group-hover:bg-gradient-to-r group-hover:from-[#00FFBB] group-hover:to-[#00B7FF] group-hover:bg-clip-text group-hover:text-transparent transition-all">
+              Brank
             </span>
-          </div>
+          </Link>
           
           <div>
             <Button 

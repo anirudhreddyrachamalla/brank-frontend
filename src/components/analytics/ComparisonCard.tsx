@@ -1,7 +1,10 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { ComparisonCardProps } from '@/types';
 import { cn } from '@/lib/utils';
+import { ProModal } from '@/components/ui';
 
 const ComparisonCard: React.FC<ComparisonCardProps> = ({
   title,
@@ -9,7 +12,14 @@ const ComparisonCard: React.FC<ComparisonCardProps> = ({
   insight,
   className,
 }) => {
+  const [isProModalOpen, setIsProModalOpen] = useState(false);
+
+  const shouldShowProButton = (llmName: string) => {
+    return llmName === 'Grok' || llmName === 'Perplexity';
+  };
+
   return (
+    <>
     <div className={cn('bg-[#0a0a0a] border border-[#2a2a2a] p-12', className)}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Left Side: Title + AI Insight */}
@@ -101,15 +111,30 @@ const ComparisonCard: React.FC<ComparisonCardProps> = ({
                     {comparison.llm}
                   </span>
                 </div>
-                <span className="text-white text-sm font-normal">
-                  {comparison.value}{title.includes('Rate') ? '%' : ''}
-                </span>
+                {shouldShowProButton(comparison.llm) ? (
+                  <button
+                    onClick={() => setIsProModalOpen(true)}
+                    className="px-4 py-1.5 bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] text-black text-xs font-medium hover:opacity-90 transition-opacity rounded-md"
+                  >
+                    Pro
+                  </button>
+                ) : (
+                  <span className="text-white text-sm font-normal">
+                    {comparison.value}{title.includes('Rate') ? '%' : ''}
+                  </span>
+                )}
               </div>
             ))}
           </div>
         </div>
       </div>
     </div>
+
+    <ProModal
+      isOpen={isProModalOpen}
+      onClose={() => setIsProModalOpen(false)}
+    />
+    </>
   );
 };
 
