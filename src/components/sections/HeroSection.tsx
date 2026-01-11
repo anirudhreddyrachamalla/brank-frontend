@@ -55,16 +55,11 @@ export default function HeroSection() {
           </h1>
         </div>
 
-        {/* Subtitle */}
-        <p className="text-gray-300 text-base md:text-lg mb-8 text-center max-w-lg">
-          Track and improve how AI surfaces your brand.
-        </p>
-
         {/* Search Bar - Dark style with cyan arrow */}
         <form onSubmit={handleSubmit} className="flex items-center bg-black/40 backdrop-blur-sm rounded-lg overflow-hidden w-full max-w-md border border-white/10">
           <input
             type="text"
-            placeholder="What's your brand?"
+            placeholder="Check your brand's AI score?"
             value={brandName}
             onChange={(e) => setBrandName(e.target.value)}
             className="flex-1 bg-transparent text-white placeholder-gray-400 px-5 py-3 text-sm focus:outline-none"

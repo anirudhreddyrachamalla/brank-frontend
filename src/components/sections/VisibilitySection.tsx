@@ -6,32 +6,38 @@ import Image from 'next/image';
 const metrics = [
   {
     name: 'Mention Rate',
-    description: 'Gives an insight into the LLM recall of your brand',
+    description: 'See how often leading LLMs mention your brand in their responses.',
+    improvement: 'Brank automatically publishes high-signal content and structured knowledge that LLMs are most likely to ingest, increasing brand mentions over time.',
     icon: '/images/Metrics/mention_rate.svg'
   },
   {
     name: 'Citations',
-    description: 'An idea into the sources from where LLM is picking you its answers',
+    description: 'Discover which sources LLMs rely on when generating answers in your category.',
+    improvement: 'Brank identifies citation gaps and guides your brand to publish and distribute content in sources LLMs frequently reference.',
     icon: '/images/Metrics/citations.svg'
   },
   {
     name: 'Sentiment',
-    description: 'How does LLM perceive your brand',
+    description: 'Understand whether LLMs perceive your brand positively, neutrally, or negatively.',
+    improvement: 'Brank analyzes sentiment drivers and recommends content and messaging changes that improve how LLMs describe your brand.',
     icon: '/images/Metrics/sentiment.svg'
   },
   {
     name: 'Rank',
-    description: 'Ranking of your brand among your competitors',
+    description: 'Track where your brand appears in LLM-generated recommendations.',
+    improvement: 'Brank\'s AI agents continuously optimize your brand\'s authority signals to move you higher in LLM rankings.',
     icon: '/images/Metrics/rank.svg'
   },
   {
-    name: 'LLM redirects',
-    description: 'Number of redirects from LLM',
+    name: 'LLM Redirects',
+    description: 'See how many users reach your website through LLM-generated answers.',
+    improvement: 'Brank increases LLM-driven traffic by ensuring your brand is the recommended destination in AI answers—through stronger citations, higher ranking, clearer brand attribution, and linkable reference content that LLMs are more likely to surface.',
     icon: '/images/Metrics/llm_redirects.svg'
   },
   {
-    name: 'LLM talk score',
-    description: 'Number of times llm bots crawled your website in last week',
+    name: 'LLM Crawls',
+    description: 'Monitor how frequently AI bots crawl your website over the last 7 days.',
+    improvement: 'Brank improves crawlability through structured content, freshness signals, and AI-friendly publishing workflows.',
     icon: '/images/Metrics/llm_talk_score.svg'
   }
 ];
@@ -92,8 +98,15 @@ export default function VisibilitySection() {
             <h3 className="text-white text-3xl font-light mb-4 transition-opacity duration-300">
               {metrics[activeMetric]?.name}
             </h3>
-            <p className="text-gray-400 text-base max-w-md transition-opacity duration-300">
+            <p className="text-gray-400 text-base mb-6 transition-opacity duration-300">
               {metrics[activeMetric]?.description}
+            </p>
+            
+            <h4 className="text-white text-base font-bold mb-3 transition-opacity duration-300">
+              How <span className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent">Brank</span> improves this:
+            </h4>
+            <p className="text-gray-400 text-base transition-opacity duration-300">
+              {metrics[activeMetric]?.improvement}
             </p>
           </div>
         </div>

@@ -55,7 +55,7 @@ function AnalyticsContent() {
             { label: "Avg Ranking", value: mockAnalyticsData.metrics.avgRanking, info: "Average ranking position" }
           ].map((metric, index) => (
             <div key={index} className="relative">
-              <div className={isLoading ? 'blur-sm' : ''}>
+              <div className={isLoading ? 'blur-md opacity-30' : ''}>
                 <MetricCard
                   label={metric.label}
                   value={metric.value}
@@ -63,7 +63,7 @@ function AnalyticsContent() {
                 />
               </div>
               {isLoading && (
-                <div className="absolute inset-0 bg-[#2F2F2F33] border border-gray-800 animate-shimmer" />
+                <div className="absolute inset-0 bg-[#2F2F2FCC] border border-gray-800 animate-shimmer" />
               )}
             </div>
           ))}
@@ -76,7 +76,7 @@ function AnalyticsContent() {
             { title: "Sentiment Score", comparisons: mockAnalyticsData.sentimentScore.comparisons, insight: mockAnalyticsData.sentimentScore.insight }
           ].map((card, index) => (
             <div key={index} className="relative">
-              <div className={isLoading ? 'blur-sm' : ''}>
+              <div className={isLoading ? 'blur-md opacity-30' : ''}>
                 <ComparisonCard
                   title={card.title}
                   comparisons={card.comparisons}
@@ -84,7 +84,7 @@ function AnalyticsContent() {
                 />
               </div>
               {isLoading && (
-                <div className="absolute inset-0 bg-[#0a0a0a] border border-[#2a2a2a] animate-shimmer" />
+                <div className="absolute inset-0 bg-[#0a0a0aDD] border border-[#2a2a2a] animate-shimmer" />
               )}
             </div>
           ))}
@@ -92,7 +92,7 @@ function AnalyticsContent() {
 
         {/* Ranking Overview */}
         <div className="mb-16 relative">
-          <div className={isLoading ? 'blur-sm' : ''}>
+          <div className={isLoading ? 'blur-md opacity-30' : ''}>
             <div className="bg-[#0a0a0a] border border-[#2a2a2a] p-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {/* Left Side: Title + AI Insight */}
@@ -207,7 +207,7 @@ function AnalyticsContent() {
           </div>
           </div>
           {isLoading && (
-            <div className="absolute inset-0 bg-[#0a0a0a] border border-[#2a2a2a] animate-shimmer" />
+            <div className="absolute inset-0 bg-[#0a0a0aDD] border border-[#2a2a2a] animate-shimmer" />
           )}
         </div>
 
@@ -249,11 +249,11 @@ function AnalyticsContent() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {mockAnalyticsData.citations.llms.map((llm, index) => (
               <div key={index} className="relative">
-                <div className={isLoading ? 'blur-sm' : ''}>
+                <div className={isLoading ? 'blur-md opacity-30' : ''}>
                   <CitationCard llm={llm} />
                 </div>
                 {isLoading && (
-                  <div className="absolute inset-0 bg-[#2F2F2F33] border border-gray-800 animate-shimmer" />
+                  <div className="absolute inset-0 bg-[#2F2F2FCC] border border-gray-800 animate-shimmer" />
                 )}
               </div>
             ))}
