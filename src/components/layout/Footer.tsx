@@ -1,32 +1,38 @@
+'use client';
+
+import { useState } from 'react';
+import { CalendlyModal } from '@/components/ui';
+
 export default function Footer() {
+  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
+
   return (
-    <footer className="w-full bg-black py-20">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Main CTA Section */}
-        <div className="text-center mb-16">
-          <h2 className="text-white text-4xl md:text-5xl font-light leading-tight mb-8">
-            If AI doesn't{' '}
-            <span className="text-teal-400 italic">surface</span>
-          </h2>
-          <h2 className="text-teal-400 italic text-4xl md:text-5xl font-light leading-tight mb-8">
-            your brand,{' '}
-          </h2>
-          <h2 className="text-white text-4xl md:text-5xl font-light leading-tight mb-12">
-            consumers won't either.
-          </h2>
-          
-          {/* Email Signup */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
-            <input 
-              type="email" 
-              placeholder="Your email" 
-              className="flex-1 bg-gray-900 text-white placeholder-gray-400 px-4 py-3 rounded border border-gray-700 focus:outline-none focus:border-teal-400 w-full sm:w-auto"
-            />
-            <button className="bg-white text-black px-6 py-3 rounded font-medium hover:bg-gray-100 transition-colors whitespace-nowrap">
-              Join Waitlist
-            </button>
+    <>
+      <footer className="w-full bg-black py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          {/* Main CTA Section */}
+          <div className="text-center mb-16">
+            <h2 className="text-white text-4xl md:text-5xl font-light leading-tight mb-8">
+              If AI doesn't{' '}
+              <span className="text-teal-400 italic">surface</span>
+            </h2>
+            <h2 className="text-teal-400 italic text-4xl md:text-5xl font-light leading-tight mb-8">
+              your brand,{' '}
+            </h2>
+            <h2 className="text-white text-4xl md:text-5xl font-light leading-tight mb-12">
+              consumers won't either.
+            </h2>
+            
+            {/* CTA Button */}
+            <div className="flex items-center justify-center">
+              <button 
+                onClick={() => setIsCalendlyOpen(true)}
+                className="bg-white text-black px-8 py-3 rounded font-medium hover:bg-gray-100 transition-colors whitespace-nowrap"
+              >
+                Learn More
+              </button>
+            </div>
           </div>
-        </div>
         
         {/* Footer Links */}
         <div className="flex flex-col md:flex-row items-center justify-between border-t border-gray-800 pt-8 text-sm">
@@ -67,5 +73,11 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+
+    <CalendlyModal
+      isOpen={isCalendlyOpen}
+      onClose={() => setIsCalendlyOpen(false)}
+    />
+    </>
   );
 }

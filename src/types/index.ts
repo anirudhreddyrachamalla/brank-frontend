@@ -48,3 +48,9 @@ export interface ButtonProps extends BaseComponentProps {
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
 }
+
+export interface CalendlyModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  url?: string;
+}
