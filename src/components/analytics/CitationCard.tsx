@@ -7,7 +7,7 @@ const CitationCard: React.FC<CitationCardProps> = ({ llm, className }) => {
   return (
     <div
       className={cn(
-        'bg-gray-900 border border-gray-800 rounded-lg p-6',
+        'bg-[#2F2F2F33] border border-gray-800 p-6',
         className
       )}
     >
@@ -34,9 +34,25 @@ const CitationCard: React.FC<CitationCardProps> = ({ llm, className }) => {
         {llm.sources.map((source, index) => (
           <div
             key={index}
-            className="flex items-center justify-between py-2 border-b border-gray-800 last:border-0"
+            className="flex items-center justify-between py-2"
           >
-            <span className="text-gray-300 text-sm">{source.url}</span>
+            <div className="flex items-center gap-2">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-gray-500"
+              >
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+              </svg>
+              <span className="text-gray-300 text-sm">{source.url}</span>
+            </div>
             <span className="text-gray-400 text-sm">{source.count}</span>
           </div>
         ))}

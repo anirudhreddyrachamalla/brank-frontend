@@ -11,7 +11,7 @@ const MetricCard: React.FC<MetricCardProps> = ({
   return (
     <div
       className={cn(
-        'bg-gray-900 border border-gray-800 rounded-lg p-6 flex flex-col items-center justify-center',
+        'bg-[#2F2F2F33] border border-gray-800 p-6 flex flex-col items-center justify-center',
         className
       )}
     >
