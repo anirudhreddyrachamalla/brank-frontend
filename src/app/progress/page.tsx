@@ -20,7 +20,7 @@ const steps = [
     name: 'Aggregating Mentions',
     insight: 'See how often LLMs mention your brand. Increase mentions by creating high-signal content that AI systems are more likely to ingest.',
   },
-];
+] as const;
 
 function ProgressContent() {
   const router = useRouter();
@@ -70,7 +70,7 @@ function ProgressContent() {
     };
   }, [router, brand]);
 
-  const currentStepData = steps[currentStep] || steps[0];
+  const currentStepData = steps[currentStep] ?? steps[0]!;
 
   return (
     <div className="min-h-screen w-full bg-black flex items-center justify-center px-6">
