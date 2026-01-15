@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 export type RevealVariant = 'fadeUp' | 'fadeIn' | 'scaleIn';
+export type RevealTrigger = 'inView' | 'mount';
 
 export interface RevealProps {
   children: React.ReactNode;
@@ -39,6 +40,12 @@ export interface RevealProps {
    * When true, the content will render visible immediately (no reveal animation).
    */
   initiallyVisible?: boolean;
+  /**
+   * When to trigger the animation.
+   * - inView: animates when it enters the viewport (default)
+   * - mount: animates once on mount (useful for hero content)
+   */
+  trigger?: RevealTrigger;
 }
 
 function getPreset({
@@ -82,26 +89,30 @@ export function Reveal({
   className,
   variant = 'fadeUp',
   delay = 0,
-  duration = 0.9,
+  duration = 1.8,
   y = 24,
   amount = 0.15,
   once = true,
   initiallyVisible = false,
+  trigger = 'inView',
 }: RevealProps) {
   const reduceMotion = useReducedMotion() ?? false;
   const preset = getPreset({ variant, y, reduceMotion });
+
+  const transition = {
+    duration: reduceMotion ? 0 : duration,
+    delay: reduceMotion ? 0 : delay,
+    ease: [0.16, 1, 0.3, 1] as const,
+  };
 
   return (
     <motion.div
       className={cn(className)}
       initial={initiallyVisible ? preset.animate : preset.initial}
-      whileInView={preset.animate}
-      viewport={{ once, amount }}
-      transition={{
-        duration: reduceMotion ? 0 : duration,
-        delay: reduceMotion ? 0 : delay,
-        ease: [0.16, 1, 0.3, 1],
-      }}
+      animate={trigger === 'mount' ? preset.animate : undefined}
+      whileInView={trigger === 'inView' ? preset.animate : undefined}
+      viewport={trigger === 'inView' ? { once, amount } : undefined}
+      transition={transition}
     >
       {children}
     </motion.div>

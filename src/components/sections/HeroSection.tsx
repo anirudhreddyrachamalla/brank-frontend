@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Reveal } from '@/components/ui';
 
 const brands = [
   { name: 'Asics', logo: '/images/brand-logos/Asics.svg', mentions: 82, citations: 76 },
@@ -43,42 +44,49 @@ export default function HeroSection() {
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-black z-10" />
 
       {/* Content - Centered */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-8 md:px-16 lg:px-24 pb-32">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-4 sm:px-8 md:px-16 lg:px-24 pb-32">
         {/* Main Headline - Centered with serif font */}
-        <div className="mb-6 max-w-4xl text-center">
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-normal leading-tight text-white">
-            Measure and improve how
-          </h1>
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-normal leading-tight">
-            <span className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent italic">AI recommends</span>
-            <span className="text-white"> your brand.</span>
-          </h1>
-        </div>
+        <Reveal trigger="mount" variant="fadeIn" duration={2.0} initiallyVisible={false}>
+          <div className="mb-6 max-w-4xl text-center">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-normal leading-tight text-white">
+              Measure and improve how
+            </h1>
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-normal leading-tight">
+              <span className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent italic">AI recommends</span>
+              <span className="text-white"> your brand.</span>
+            </h1>
+          </div>
+        </Reveal>
 
         {/* Search Bar - Dark style with cyan arrow */}
-        <form onSubmit={handleSubmit} className="flex items-center bg-black/40 backdrop-blur-sm rounded-lg overflow-hidden w-full max-w-md border border-white/10">
-          <input
-            type="text"
-            placeholder="Check your brand's AI score?"
-            value={brandName}
-            onChange={(e) => setBrandName(e.target.value)}
-            className="flex-1 bg-transparent text-white placeholder-gray-400 px-3 py-2 sm:px-5 sm:py-3 text-[16px] sm:text-sm focus:outline-none"
-          />
-          <button 
-            type="submit"
-            className="bg-transparent text-gray-400 px-3 py-2 sm:px-4 sm:py-3 hover:[&>svg]:stroke-[url(#arrowGradient)] transition-all duration-150 group active:scale-95"
+        <Reveal trigger="mount" variant="fadeUp" delay={0.25} duration={2.0} y={16} initiallyVisible={false}>
+          <form
+            onSubmit={handleSubmit}
+            className="flex items-center bg-black/40 backdrop-blur-sm rounded-lg overflow-hidden w-full max-w-md md:max-w-2xl lg:max-w-6xl border border-white/10"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="sm:w-5 sm:h-5 stroke-current group-hover:stroke-[#00FFBB]" strokeWidth="2">
-              <defs>
-                <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" style={{ stopColor: '#00FFBB', stopOpacity: 1 }} />
-                  <stop offset="100%" style={{ stopColor: '#00B7FF', stopOpacity: 1 }} />
-                </linearGradient>
-              </defs>
-              <path d="M5 12h14M12 5l7 7-7 7" className="group-hover:stroke-[url(#arrowGradient)]" />
-            </svg>
-          </button>
-        </form>
+            <input
+              type="text"
+              placeholder="Search your brand"
+              value={brandName}
+              onChange={(e) => setBrandName(e.target.value)}
+              className="flex-1 min-w-0 bg-transparent text-white placeholder-gray-400 px-2.5 py-2 sm:px-5 sm:py-3 text-sm leading-5 sm:text-base sm:leading-6 placeholder:text-[13px] sm:placeholder:text-base focus:outline-none"
+            />
+            <button 
+              type="submit"
+              className="shrink-0 bg-transparent text-gray-400 px-2.5 py-2 sm:px-4 sm:py-3 hover:[&>svg]:stroke-[url(#arrowGradient)] transition-all duration-150 group active:scale-95"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="sm:w-5 sm:h-5 stroke-current group-hover:stroke-[#00FFBB]" strokeWidth="2">
+                <defs>
+                  <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style={{ stopColor: '#00FFBB', stopOpacity: 1 }} />
+                    <stop offset="100%" style={{ stopColor: '#00B7FF', stopOpacity: 1 }} />
+                  </linearGradient>
+                </defs>
+                <path d="M5 12h14M12 5l7 7-7 7" className="group-hover:stroke-[url(#arrowGradient)]" />
+              </svg>
+            </button>
+          </form>
+        </Reveal>
       </div>
 
 

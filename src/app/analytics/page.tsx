@@ -1,8 +1,9 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
 import { Suspense, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
+
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { MetricCard } from '@/components/ui/MetricCard';
@@ -15,6 +16,9 @@ function AnalyticsContent() {
   const searchParams = useSearchParams();
   const brandName = searchParams.get('brand') || 'Unknown Brand';
   const [isRankingProModalOpen, setIsRankingProModalOpen] = useState(false);
+
+  const baseDelay = 0.08;
+  const stagger = 0.08;
 
   const shouldShowRankingProButton = (llmName: string) => {
     return llmName === 'Grok' || llmName === 'Perplexity';
@@ -42,43 +46,41 @@ function AnalyticsContent() {
         </Reveal>
 
         {/* Metrics Grid */}
-        <Reveal delay={0.12} duration={1.0}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-16">
           {[
             { label: "Total Mentions", value: mockAnalyticsData.metrics.totalMentions, info: "Total number of mentions across all LLMs" },
             { label: "Total Citations", value: mockAnalyticsData.metrics.totalCitations, info: "Total number of citations from sources" },
             { label: "Avg Sentiment", value: mockAnalyticsData.metrics.avgSentiment, info: "Average sentiment score across platforms" },
             { label: "Avg Ranking", value: mockAnalyticsData.metrics.avgRanking, info: "Average ranking position" }
           ].map((metric, index) => (
-            <MetricCard
-              key={index}
-              label={metric.label}
-              value={metric.value}
-              info={metric.info}
-            />
+            <Reveal key={metric.label} delay={baseDelay + index * stagger} duration={0.9} y={14}>
+              <MetricCard
+                label={metric.label}
+                value={metric.value}
+                info={metric.info}
+              />
+            </Reveal>
           ))}
-          </div>
-        </Reveal>
+        </div>
 
         {/* Comparison Sections - Stacked Vertically */}
-        <Reveal delay={0.12} duration={1.0}>
-          <div className="space-y-6 sm:space-y-8 mb-10 sm:mb-16">
+        <div className="space-y-6 sm:space-y-8 mb-10 sm:mb-16">
           {[
             { title: "Mentions Rate", comparisons: mockAnalyticsData.mentionsRate.comparisons, insight: mockAnalyticsData.mentionsRate.insight },
             { title: "Sentiment Score", comparisons: mockAnalyticsData.sentimentScore.comparisons, insight: mockAnalyticsData.sentimentScore.insight }
           ].map((card, index) => (
-            <ComparisonCard
-              key={index}
-              title={card.title}
-              comparisons={card.comparisons}
-              insight={card.insight}
-            />
+            <Reveal key={card.title} delay={baseDelay + index * stagger} duration={0.95} y={16}>
+              <ComparisonCard
+                title={card.title}
+                comparisons={card.comparisons}
+                insight={card.insight}
+              />
+            </Reveal>
           ))}
-          </div>
-        </Reveal>
+        </div>
 
         {/* Ranking Overview */}
-        <Reveal delay={0.12} duration={1.0}>
+        <Reveal delay={baseDelay} duration={1.0} y={18}>
           <div className="mb-10 sm:mb-16">
           <div className="bg-[#0a0a0a] border border-[#2a2a2a] p-4 sm:p-6 md:p-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
@@ -162,35 +164,39 @@ function AnalyticsContent() {
                 {/* Rankings List */}
                 <div className="space-y-4">
                   {mockAnalyticsData.rankings.byLLMs.llms.map((llm, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center justify-between"
+                    <Reveal
+                      key={llm.name}
+                      delay={baseDelay + 0.08 + index * 0.06}
+                      duration={0.6}
+                      y={10}
                     >
-                      <div className="flex items-center gap-3 min-w-0">
-                        <Image
-                          src={llm.icon}
-                          alt={llm.name}
-                          width={16}
-                          height={16}
-                          className="object-contain opacity-70"
-                        />
-                        <span className="text-gray-500 text-xs sm:text-sm uppercase tracking-wide truncate">
-                          {llm.name}
-                        </span>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3 min-w-0">
+                          <Image
+                            src={llm.icon}
+                            alt={llm.name}
+                            width={16}
+                            height={16}
+                            className="object-contain opacity-70"
+                          />
+                          <span className="text-gray-500 text-xs sm:text-sm uppercase tracking-wide truncate">
+                            {llm.name}
+                          </span>
+                        </div>
+                        {shouldShowRankingProButton(llm.name) ? (
+                          <button
+                            onClick={() => setIsRankingProModalOpen(true)}
+                            className="px-4 py-1.5 bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] text-black text-xs font-medium hover:opacity-90 transition-all duration-150 rounded-md active:scale-95"
+                          >
+                            Pro
+                          </button>
+                        ) : (
+                          <span className="text-white text-xs sm:text-sm font-normal">
+                            #{llm.rank}
+                          </span>
+                        )}
                       </div>
-                      {shouldShowRankingProButton(llm.name) ? (
-                        <button
-                          onClick={() => setIsRankingProModalOpen(true)}
-                          className="px-4 py-1.5 bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] text-black text-xs font-medium hover:opacity-90 transition-all duration-150 rounded-md active:scale-95"
-                        >
-                          Pro
-                        </button>
-                      ) : (
-                        <span className="text-white text-xs sm:text-sm font-normal">
-                          #{llm.rank}
-                        </span>
-                      )}
-                    </div>
+                    </Reveal>
                   ))}
                 </div>
               </div>
@@ -200,48 +206,57 @@ function AnalyticsContent() {
         </Reveal>
 
         {/* Citation Overview */}
-        <Reveal delay={0.12} duration={1.0}>
-          <div className="mb-10 sm:mb-16">
-          <div className="mb-4 sm:mb-8">
-            <h2 className="text-white text-xl sm:text-2xl md:text-3xl font-light mb-2">
-              Citation Overview
-            </h2>
-          </div>
+        <div className="mb-10 sm:mb-16">
+          <Reveal delay={baseDelay} duration={0.9} y={14}>
+            <div className="mb-4 sm:mb-8">
+              <h2 className="text-white text-xl sm:text-2xl md:text-3xl font-light mb-2">
+                Citation Overview
+              </h2>
+            </div>
+          </Reveal>
 
           {/* AI Insight */}
-          <div className="bg-[#0a0a0a] border border-[#2a2a2a] p-4 sm:p-6 md:p-12 mb-6 sm:mb-8">
-            <div className="flex flex-col sm:flex-row items-start gap-3">
-              <div className="flex-shrink-0">
-                <svg width="20" height="20" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="citationGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" style={{ stopColor: '#00FFBB', stopOpacity: 1 }} />
-                      <stop offset="100%" style={{ stopColor: '#00B7FF', stopOpacity: 1 }} />
-                    </linearGradient>
-                  </defs>
-                  <path d="M21.2799 4.52692C21.6647 3.48715 23.1353 3.48716 23.5201 4.52692L27.8543 16.2401C27.9753 16.567 28.233 16.8247 28.5599 16.9457L40.2731 21.2799C41.3128 21.6647 41.3128 23.1353 40.2731 23.5201L28.5599 27.8543C28.233 27.9753 27.9753 28.233 27.8543 28.5599L23.5201 40.2731C23.1353 41.3128 21.6647 41.3128 21.2799 40.2731L16.9457 28.5599C16.8247 28.233 16.567 27.9753 16.2401 27.8543L4.52692 23.5201C3.48715 23.1353 3.48716 21.6647 4.52692 21.2799L16.2401 16.9457C16.567 16.8247 16.8247 16.567 16.9457 16.2401L21.2799 4.52692Z" fill="url(#citationGradient1)"/>
-                  <path d="M34.777 5.29256C34.8625 5.06157 35.1892 5.06157 35.2747 5.29256L36.2375 7.89468C36.2644 7.96731 36.3217 8.02456 36.3943 8.05144L38.9964 9.01431C39.2274 9.09978 39.2274 9.42649 38.9964 9.51196L36.3943 10.4748C36.3217 10.5017 36.2644 10.559 36.2375 10.6316L35.2747 13.2337C35.1892 13.4647 34.8625 13.4647 34.777 13.2337L33.8141 10.6316C33.7873 10.559 33.73 10.5017 33.6574 10.4748L31.0553 9.51196C30.8243 9.42649 30.8243 9.09978 31.0553 9.01431L33.6574 8.05144C33.73 8.02456 33.7873 7.96731 33.8141 7.89468L34.777 5.29256Z" fill="url(#citationGradient1)"/>
-                </svg>
-              </div>
-              <div className="flex-1">
-                <h4 className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent text-sm font-medium mb-2 uppercase tracking-wider">
-                  AI INSIGHT
-                </h4>
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  {mockAnalyticsData.citations.insight}
-                </p>
+          <Reveal delay={baseDelay + stagger} duration={0.95} y={16}>
+            <div className="bg-[#0a0a0a] border border-[#2a2a2a] p-4 sm:p-6 md:p-12 mb-6 sm:mb-8">
+              <div className="flex flex-col sm:flex-row items-start gap-3">
+                <div className="flex-shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="citationGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style={{ stopColor: '#00FFBB', stopOpacity: 1 }} />
+                        <stop offset="100%" style={{ stopColor: '#00B7FF', stopOpacity: 1 }} />
+                      </linearGradient>
+                    </defs>
+                    <path d="M21.2799 4.52692C21.6647 3.48715 23.1353 3.48716 23.5201 4.52692L27.8543 16.2401C27.9753 16.567 28.233 16.8247 28.5599 16.9457L40.2731 21.2799C41.3128 21.6647 41.3128 23.1353 40.2731 23.5201L28.5599 27.8543C28.233 27.9753 27.9753 28.233 27.8543 28.5599L23.5201 40.2731C23.1353 41.3128 21.6647 41.3128 21.2799 40.2731L16.9457 28.5599C16.8247 28.233 16.567 27.9753 16.2401 27.8543L4.52692 23.5201C3.48715 23.1353 3.48716 21.6647 4.52692 21.2799L16.2401 16.9457C16.567 16.8247 16.8247 16.567 16.9457 16.2401L21.2799 4.52692Z" fill="url(#citationGradient1)"/>
+                    <path d="M34.777 5.29256C34.8625 5.06157 35.1892 5.06157 35.2747 5.29256L36.2375 7.89468C36.2644 7.96731 36.3217 8.02456 36.3943 8.05144L38.9964 9.01431C39.2274 9.09978 39.2274 9.42649 38.9964 9.51196L36.3943 10.4748C36.3217 10.5017 36.2644 10.559 36.2375 10.6316L35.2747 13.2337C35.1892 13.4647 34.8625 13.4647 34.777 13.2337L33.8141 10.6316C33.7873 10.559 33.73 10.5017 33.6574 10.4748L31.0553 9.51196C30.8243 9.42649 30.8243 9.09978 31.0553 9.01431L33.6574 8.05144C33.73 8.02456 33.7873 7.96731 33.8141 7.89468L34.777 5.29256Z" fill="url(#citationGradient1)"/>
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h4 className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent text-sm font-medium mb-2 uppercase tracking-wider">
+                    AI INSIGHT
+                  </h4>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {mockAnalyticsData.citations.insight}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Citation Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {mockAnalyticsData.citations.llms.map((llm, index) => (
-              <CitationCard key={index} llm={llm} />
+              <Reveal
+                key={llm.name}
+                delay={baseDelay + stagger * 2 + index * stagger}
+                duration={0.95}
+                y={16}
+              >
+                <CitationCard llm={llm} />
+              </Reveal>
             ))}
           </div>
-          </div>
-        </Reveal>
+        </div>
       </main>
 
       <Reveal delay={0.12} duration={1.0}>

@@ -10,17 +10,15 @@ export default function Home() {
     <div className="min-h-screen bg-black">
       <Header />
       <main>
-        <Reveal variant="fadeIn" amount={0.4} initiallyVisible duration={1.0}>
-          <HeroSection />
-        </Reveal>
-        <Reveal delay={0.12} duration={1.0}>
+        <HeroSection />
+        <Reveal delay={0.24} duration={2.0}>
           <VisibilitySection />
         </Reveal>
-        <Reveal delay={0.12} duration={1.0}>
+        <Reveal delay={0.24} duration={2.0}>
           <AIExposureSection />
         </Reveal>
       </main>
-      <Reveal delay={0.12} duration={1.0}>
+      <Reveal delay={0.24} duration={2.0}>
         <Footer />
       </Reveal>
     </div>

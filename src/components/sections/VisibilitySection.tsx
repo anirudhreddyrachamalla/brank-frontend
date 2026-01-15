@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { Reveal } from '@/components/ui';
 
 const metrics = [
   {
@@ -67,19 +68,24 @@ export default function VisibilitySection() {
   return (
     <section className="w-full bg-black py-12 sm:py-16 md:py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Main headline */}
-        <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-3 sm:mb-4 text-center">
-          Learn what you can do for{' '}
-          <span className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent italic">your brand's visibility.</span>
-        </h2>
-        
-        {/* Subtitle */}
-        <p className="text-gray-400 text-sm sm:text-base md:text-lg mb-10 sm:mb-12 md:mb-16 text-center">
-          By improving different metrics
-        </p>
+        <Reveal duration={2.0}>
+          {/* Main headline */}
+          <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-3 sm:mb-4 text-center">
+            Learn what you can do for{' '}
+            <span className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent italic">
+              your brand&apos;s visibility.
+            </span>
+          </h2>
+
+          {/* Subtitle */}
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg mb-10 sm:mb-12 md:mb-16 text-center">
+            By improving different metrics
+          </p>
+        </Reveal>
         
         {/* Citations Section */}
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-start gap-6 sm:gap-8 mb-12 sm:mb-16 md:mb-20 max-w-6xl mx-auto">
+        <Reveal delay={0.2} duration={2.0}>
+          <div className="flex flex-col md:flex-row items-center md:items-start justify-start gap-6 sm:gap-8 mb-12 sm:mb-16 md:mb-20 max-w-6xl mx-auto">
           {/* Quote Icon Box */}
           <div className="flex-shrink-0">
             <div className="relative w-48 h-32 sm:w-60 sm:h-40 md:w-72 md:h-48 border border-gray-700 flex items-center justify-center">
@@ -111,10 +117,12 @@ export default function VisibilitySection() {
               {metrics[activeMetric]?.improvement}
             </p>
           </div>
-        </div>
+          </div>
+        </Reveal>
 
         {/* Icons Grid */}
-        <div className="flex items-center justify-between gap-2 sm:gap-3 md:gap-4 max-w-6xl mx-auto">
+        <Reveal delay={0.35} duration={2.0}>
+          <div className="flex items-center justify-between gap-2 sm:gap-3 md:gap-4 max-w-6xl mx-auto">
           {metrics.map((metric, index) => (
             <div 
               key={index}
@@ -141,7 +149,8 @@ export default function VisibilitySection() {
               )}
             </div>
           ))}
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
