@@ -69,7 +69,7 @@ export default function HeroSection() {
               placeholder="Search your brand"
               value={brandName}
               onChange={(e) => setBrandName(e.target.value)}
-              className="flex-1 min-w-0 bg-transparent text-white placeholder-gray-400 px-2.5 py-2 sm:px-5 sm:py-3 text-sm leading-5 sm:text-base sm:leading-6 placeholder:text-[13px] sm:placeholder:text-base focus:outline-none"
+              className="flex-1 min-w-0 bg-transparent text-white placeholder-gray-400 px-2.5 py-2 sm:px-5 sm:py-3 text-[16px] leading-6 focus:outline-none"
             />
             <button 
               type="submit"
