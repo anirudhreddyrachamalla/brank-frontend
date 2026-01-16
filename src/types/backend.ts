@@ -70,3 +70,13 @@ export interface BackendMetricResponse {
   website: string;
 }
 
+export interface LandingPageResponse {
+  asics: number;
+  coinbase: number;
+  'cult.fit': number;
+  decathlon: number;
+  leetcode: number;
+  nothing: number;
+  zerodha: number;
+}
+

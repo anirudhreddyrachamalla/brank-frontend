@@ -3,18 +3,45 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Reveal } from '@/components/ui';
+import { LandingPageResponse } from '@/types/backend';
+import { BRAND_KEY_MAP } from '@/lib/backend';
 
-const brands = [
-  { name: 'Asics', logo: '/images/brand-logos/Asics.svg', mentions: 82, citations: 76 },
-  { name: 'Coinbase', logo: '/images/brand-logos/Coinbase.svg', mentions: 91, citations: 85 },
-  { name: 'Cult', logo: '/images/brand-logos/Cult.svg', mentions: 78, citations: 72 },
-  { name: 'Decathlon', logo: '/images/brand-logos/Decathlon.svg', mentions: 65, citations: 58 },
-  { name: 'LeetCode', logo: '/images/brand-logos/LeetCode.svg', mentions: 88, citations: 81 },
-  { name: 'Nothing', logo: '/images/brand-logos/Nothing.svg', mentions: 73, citations: 69 },
-  { name: 'Zerodha', logo: '/images/brand-logos/Zerodha.svg', mentions: 79, citations: 74 },
+interface HeroSectionProps {
+  brandData?: LandingPageResponse;
+}
+
+// Static brand information (logos and names)
+const BRAND_INFO = [
+  { name: 'Asics', logo: '/images/brand-logos/Asics.svg' },
+  { name: 'Coinbase', logo: '/images/brand-logos/Coinbase.svg' },
+  { name: 'Cult', logo: '/images/brand-logos/Cult.svg' },
+  { name: 'Decathlon', logo: '/images/brand-logos/Decathlon.svg' },
+  { name: 'LeetCode', logo: '/images/brand-logos/LeetCode.svg' },
+  { name: 'Nothing', logo: '/images/brand-logos/Nothing.svg' },
+  { name: 'Zerodha', logo: '/images/brand-logos/Zerodha.svg' },
 ];
 
-export default function HeroSection() {
+// Mock data as fallback
+const MOCK_MENTIONS: Record<string, number> = {
+  'Asics': 82,
+  'Coinbase': 91,
+  'Cult': 78,
+  'Decathlon': 65,
+  'LeetCode': 88,
+  'Nothing': 73,
+  'Zerodha': 79,
+};
+
+export default function HeroSection({ brandData }: HeroSectionProps) {
+  // Merge static brand info with dynamic data from backend
+  const brands = BRAND_INFO.map(brand => {
+    const backendKey = BRAND_KEY_MAP[brand.name];
+    const mentions = brandData?.[backendKey as keyof LandingPageResponse] || MOCK_MENTIONS[brand.name] || 0;
+    return {
+      ...brand,
+      mentions: Math.round(mentions),
+    };
+  });
   const [hoveredBrand, setHoveredBrand] = useState<string | null>(null);
   const [isPaused, setIsPaused] = useState(false);
   const [brandName, setBrandName] = useState('');
@@ -121,21 +148,17 @@ export default function HeroSection() {
               {/* Tooltip */}
               {hoveredBrand === `${brand.name}-${index}` && (
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-6 sm:mb-8 animate-fadeIn z-50">
-                  <div className="relative bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-2xl rounded-lg px-2.5 py-1.5 sm:px-3 sm:py-2 border border-white/20 min-w-[90px] sm:min-w-[110px] shadow-2xl shadow-black/50">
+                  <div className="relative bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-2xl rounded-lg px-4 py-3 sm:px-5 sm:py-4 border border-white/20 shadow-2xl shadow-black/50 w-[260px] sm:w-[320px] flex items-center">
                     {/* Glow effect */}
                     <div className="absolute inset-0 rounded-lg bg-[#00FFBB]/10 blur-xl -z-10" />
 
-                    <div className="flex flex-col gap-1 sm:gap-1.5">
-                      <div className="flex items-center justify-between gap-2 sm:gap-4">
-                        <span className="text-white/60 text-[10px] sm:text-xs">Mentions</span>
-                        <span className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent text-xs sm:text-sm font-bold">{brand.mentions}%</span>
-                      </div>
-                      <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                      <div className="flex items-center justify-between gap-2 sm:gap-4">
-                        <span className="text-white/60 text-[10px] sm:text-xs">Citations</span>
-                        <span className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent text-xs sm:text-sm font-bold">{brand.citations}%</span>
-                      </div>
-                    </div>
+                    <p className="text-white/90 text-xs sm:text-sm leading-snug text-center line-clamp-2 w-full">
+                      Out of 100 user prompts LLMs recall{' '}
+                      <span className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent font-bold">
+                        {brand.name}
+                      </span>
+                      {' '}{brand.mentions} times
+                    </p>
 
                     {/* Tooltip arrow */}
                     <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[8px] border-transparent border-t-white/20" />
