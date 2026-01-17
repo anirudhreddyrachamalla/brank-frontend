@@ -3,3 +3,4 @@ export { CalendlyModal } from './CalendlyModal';
 export { MetricCard } from './MetricCard';
 export { ProModal } from './ProModal';
 export { Reveal } from './Reveal';
+export { default as RotatingText } from './RotatingText';

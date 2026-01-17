@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Reveal } from '@/components/ui';
+import { Reveal, RotatingText } from '@/components/ui';
 import { LandingPageResponse } from '@/types/backend';
 import { BRAND_KEY_MAP } from '@/lib/backend';
 
@@ -81,13 +81,14 @@ export default function HeroSection({ brandData }: HeroSectionProps) {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-4 sm:px-8 md:px-16 lg:px-24 pb-32">
         {/* Main Headline - Centered with serif font */}
         <Reveal trigger="mount" variant="fadeIn" duration={2.0} initiallyVisible={false}>
-          <div className="mb-6 max-w-4xl text-center">
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-normal leading-tight text-white">
-              Measure and improve how
-            </h1>
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-normal leading-tight">
-              <span className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent italic">AI recommends</span>
-              <span className="text-white"> your brand.</span>
+          <div className="mb-6 w-full max-w-md md:max-w-2xl lg:max-w-6xl text-center mx-auto">
+            <h1 className="font-serif text-2xl sm:text-3xl md:text-[2.75rem] lg:text-[3.375rem] font-normal leading-relaxed text-white flex flex-wrap items-center justify-center gap-2 md:gap-3">
+              <span>Track your brand across</span>
+              <RotatingText 
+                texts={['ChatGPT', 'Gemini', 'Grok', 'Perplexity']}
+                rotationInterval={2500}
+                className="font-serif text-2xl sm:text-3xl md:text-[2.75rem] lg:text-[3.375rem]"
+              />
             </h1>
           </div>
         </Reveal>
@@ -96,7 +97,7 @@ export default function HeroSection({ brandData }: HeroSectionProps) {
         <Reveal trigger="mount" variant="fadeUp" delay={0.25} duration={2.0} y={16} initiallyVisible={false}>
           <form
             onSubmit={handleSubmit}
-            className="flex items-center bg-black/40 backdrop-blur-sm rounded-lg overflow-hidden w-full max-w-md md:max-w-2xl lg:max-w-6xl border border-white/10"
+            className="flex items-center bg-black/40 backdrop-blur-sm rounded-lg overflow-hidden w-full max-w-md md:max-w-2xl lg:max-w-6xl border border-white/10 mx-auto"
           >
             <input
               type="text"
