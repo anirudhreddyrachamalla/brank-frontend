@@ -84,7 +84,7 @@ function ProgressContent() {
         {/* Progress Bar - 3x larger */}
         <div className="w-full h-3 bg-gray-800 mb-8 overflow-hidden rounded-sm">
           <div
-            className="h-full bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] transition-all duration-100 ease-linear"
+            className="h-full bg-white transition-all duration-100 ease-linear"
             style={{ width: `${progress}%` }}
           />
         </div>

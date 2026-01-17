@@ -72,7 +72,7 @@ export default function VisibilitySection() {
           {/* Main headline */}
           <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-3 sm:mb-4 text-center">
             Learn what you can do for{' '}
-            <span className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent italic">
+            <span className="text-white italic">
               your brand&apos;s visibility.
             </span>
           </h2>
@@ -111,7 +111,7 @@ export default function VisibilitySection() {
             </p>
             
             <h4 className="text-white text-sm sm:text-base font-bold mb-2 sm:mb-3 transition-opacity duration-300">
-              How <span className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent">Brank</span> improves this:
+              How <span className="text-white">Brank</span> improves this:
             </h4>
             <p className="text-gray-400 text-sm sm:text-base transition-opacity duration-300">
               {metrics[activeMetric]?.improvement}

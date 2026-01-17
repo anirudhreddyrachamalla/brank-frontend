@@ -14,9 +14,9 @@ export default function Footer() {
           <div className="text-center mb-10 sm:mb-12 md:mb-16">
             <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-4 sm:mb-6 md:mb-8">
               If AI doesn't{' '}
-              <span className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent italic">surface</span>
+              <span className="text-white italic">surface</span>
             </h2>
-            <h2 className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent italic text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-4 sm:mb-6 md:mb-8">
+            <h2 className="text-white italic text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-4 sm:mb-6 md:mb-8">
               your brand,{' '}
             </h2>
             <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-6 sm:mb-8 md:mb-12">

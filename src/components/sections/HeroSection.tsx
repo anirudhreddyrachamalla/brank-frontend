@@ -133,12 +133,9 @@ export default function HeroSection({ brandData }: HeroSectionProps) {
               {hoveredBrand === `${brand.name}-${index}` && (
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-6 sm:mb-8 animate-fadeIn z-50">
                   <div className="relative bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-2xl rounded-lg px-4 py-3 sm:px-5 sm:py-4 border border-white/20 shadow-2xl shadow-black/50 w-[260px] sm:w-[320px] flex items-center">
-                    {/* Glow effect */}
-                    <div className="absolute inset-0 rounded-lg bg-[#00FFBB]/10 blur-xl -z-10" />
-
                     <p className="text-white/90 text-xs sm:text-sm leading-snug text-center line-clamp-2 w-full">
                       Out of 100 user prompts LLMs recall{' '}
-                      <span className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent font-bold">
+                      <span className="text-white font-bold">
                         {brand.name}
                       </span>
                       {' '}{brand.mentions} times

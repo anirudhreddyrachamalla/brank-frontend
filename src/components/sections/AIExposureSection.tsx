@@ -16,7 +16,7 @@ export default function AIExposureSection() {
         {/* Main headline */}
         <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-3 sm:mb-4 text-center">
           Brank helps you understand your{' '}
-          <span className="bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] bg-clip-text text-transparent italic">AI exposure.</span>
+          <span className="text-white italic">AI exposure.</span>
         </h2>
         
         {/* Subtitle */}

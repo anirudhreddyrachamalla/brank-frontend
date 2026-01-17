@@ -20,7 +20,7 @@ export default function Header() {
               height={20}
               className="text-white sm:w-6 sm:h-6"
             />
-            <span className="text-white text-lg sm:text-xl font-semibold tracking-tight group-hover:bg-gradient-to-r group-hover:from-[#00FFBB] group-hover:to-[#00B7FF] group-hover:bg-clip-text group-hover:text-transparent transition-all">
+            <span className="text-white text-lg sm:text-xl font-semibold tracking-tight transition-all">
               Brank
             </span>
           </Link>

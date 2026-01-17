@@ -95,7 +95,7 @@ const ProModal: React.FC<ProModalProps> = ({ isOpen, onClose }) => {
                 </div>
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-gradient-to-r from-[#00FFBB] to-[#00B7FF] text-black text-sm font-medium hover:opacity-90 transition-all duration-150 rounded-md active:scale-95"
+                  className="px-6 py-3 bg-white text-black text-sm font-medium hover:opacity-90 transition-all duration-150 rounded-md active:scale-95"
                 >
                   Submit
                 </button>
