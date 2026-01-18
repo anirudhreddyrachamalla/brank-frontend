@@ -34,7 +34,31 @@ export default function HeroSection({ brandData }: HeroSectionProps) {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-8 md:px-16 lg:px-24">
         <div className="w-full flex flex-col items-center relative translate-y-16">
           {/* Main Headline - Positioned absolutely above the search bar */}
-          <div className="absolute bottom-full w-full flex justify-center mb-10 sm:mb-14 md:mb-18">
+          <div className="absolute bottom-full w-full flex flex-col items-center mb-10 sm:mb-14 md:mb-18">
+            {/* Animated Logo */}
+            <Reveal trigger="mount" variant="fadeUp" delay={0.1} duration={2.0} y={16} initiallyVisible={false}>
+              <div className="mb-2 sm:mb-4">
+                 <div 
+                   className="
+                     w-32 h-12 sm:w-48 sm:h-16 md:w-64 md:h-20
+                     bg-[linear-gradient(to_right,white_0%,#22c55e_50%,white_100%)]
+                     bg-[length:200%_auto]
+                     animate-shine-wave
+                   "
+                   style={{
+                     maskImage: 'url(/images/brank-logo.svg)',
+                     maskRepeat: 'no-repeat',
+                     maskPosition: 'center',
+                     maskSize: 'contain',
+                     WebkitMaskImage: 'url(/images/brank-logo.svg)',
+                     WebkitMaskRepeat: 'no-repeat',
+                     WebkitMaskPosition: 'center',
+                     WebkitMaskSize: 'contain'
+                   }}
+                 />
+              </div>
+            </Reveal>
+
             <Reveal trigger="mount" variant="fadeUp" delay={0.25} duration={2.0} y={16} initiallyVisible={false}>
               <div className="w-full sm:w-[500px] md:w-[650px] lg:w-[800px] xl:w-[900px] overflow-visible">
                 <h1 className="font-sans text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium tracking-tight text-text-primary flex flex-col sm:flex-row sm:items-center items-center gap-2 md:gap-3 sm:pl-24 md:pl-32 lg:pl-40 overflow-visible">

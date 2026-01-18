@@ -78,12 +78,11 @@ const config: Config = {
         'glow-white': '0 0 20px rgba(255, 255, 255, 0.2)',
         'glow-white-lg': '0 0 40px rgba(255, 255, 255, 0.3)',
       },
-      animation: {
-        'fade-in': 'fadeIn 500ms ease-out forwards',
-        'glow-pulse': 'glowPulse 2s ease-in-out infinite',
-        'hover-lift': 'hoverLift 300ms ease forwards',
-      },
       keyframes: {
+        'shine-wave': {
+          '0%': { backgroundPosition: '-200% center' },
+          '100%': { backgroundPosition: '200% center' },
+        },
         fadeIn: {
           '0%': { opacity: '0', transform: 'translateY(10px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
@@ -96,6 +95,12 @@ const config: Config = {
           '0%': { transform: 'translateY(0)' },
           '100%': { transform: 'translateY(-4px)' },
         },
+      },
+      animation: {
+        'shine-wave': 'shine-wave 3s linear infinite',
+        'fade-in': 'fadeIn 500ms ease-out forwards',
+        'glow-pulse': 'glowPulse 2s ease-in-out infinite',
+        'hover-lift': 'hoverLift 300ms ease forwards',
       },
     },
   },
