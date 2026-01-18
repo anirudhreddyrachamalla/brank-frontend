@@ -7,8 +7,8 @@
 :root {
   --background: #000000;
   --foreground: #ffffff;
-  --accent-teal: #06B6D4;
-  --accent-cyan: #06B6D4;
+  --accent-teal: #06b6d4;
+  --accent-cyan: #06b6d4;
   --card-bg: #1a1a1a;
   --header-bg: #000000;
 }
@@ -105,11 +105,11 @@ body {
 }
 
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 80s linear infinite;
 }
 
 .animate-pause {
-  animation: marquee 30s linear infinite;
+  animation: marquee 80s linear infinite;
   animation-play-state: paused;
 }
 

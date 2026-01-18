@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Reveal, RotatingText } from '@/components/ui';
+import LogoTicker from '@/components/ui/LogoTicker';
 import { LandingPageResponse } from '@/types/backend';
 
 interface HeroSectionProps {
@@ -31,19 +32,43 @@ export default function HeroSection({ brandData }: HeroSectionProps) {
     <section className="relative min-h-screen w-full overflow-hidden bg-black">
       {/* Content - Centered */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-8 md:px-16 lg:px-24">
-        <div className="w-full flex flex-col items-center">
+        <div className="w-full flex flex-col items-center relative translate-y-16">
+          {/* Main Headline - Positioned absolutely above the search bar */}
+          <div className="absolute bottom-full w-full flex justify-center mb-10 sm:mb-14 md:mb-18">
+            <Reveal trigger="mount" variant="fadeUp" delay={0.25} duration={2.0} y={16} initiallyVisible={false}>
+              <div className="w-full sm:w-[500px] md:w-[650px] lg:w-[800px] xl:w-[900px] overflow-visible">
+                <h1 className="font-serif text-lg sm:text-xl md:text-2xl lg:text-3xl font-normal text-white flex flex-col sm:flex-row sm:items-center items-center gap-2 md:gap-3 sm:pl-24 md:pl-32 lg:pl-40 overflow-visible">
+                  <span className="shrink-0">Track your brand across</span>
+                  <RotatingText
+                    items={[
+                      { name: 'ChatGPT', logo: '/images/LLMs/chatgpt.svg' },
+                      { name: 'Gemini', logo: '/images/LLMs/gemini.svg' },
+                      { name: 'Grok', logo: '/images/LLMs/grok.svg' },
+                      { name: 'Perplexity', logo: '/images/LLMs/perplexity.svg' },
+                    ]}
+                    rotationInterval={2500}
+                    className="font-serif text-lg sm:text-xl md:text-2xl lg:text-3xl"
+                  />
+                </h1>
+              </div>
+            </Reveal>
+          </div>
+
           {/* Search Bar - White border with search icon */}
           <Reveal trigger="mount" variant="fadeIn" duration={2.0} initiallyVisible={false}>
             <form
               onSubmit={handleSubmit}
-              className="flex items-center border-2 border-white rounded-full mb-8 sm:mb-10 md:mb-12 w-[95%] sm:w-[500px] md:w-[650px] lg:w-[800px] xl:w-[900px]"
+              className="flex items-center rounded-full w-[85vw] sm:w-[500px] md:w-[650px] lg:w-[800px] xl:w-[900px] bg-[#1e1e1e]"
+              style={{
+                boxShadow: 'inset 4px 4px 8px rgba(0, 0, 0, 0.6), inset -4px -4px 8px rgba(255, 255, 255, 0.05), 0 4px 15px rgba(0, 0, 0, 0.5)'
+              }}
             >
               <input
                 type="text"
                 placeholder="Get Brank's analysis of your brand."
                 value={brandName}
                 onChange={(e) => setBrandName(e.target.value)}
-                className="flex-1 min-w-0 bg-transparent text-white placeholder-white/70 pl-4 sm:pl-6 md:pl-8 pr-2 py-2 sm:py-3 md:py-4 text-base sm:text-lg md:text-xl lg:text-2xl focus:outline-none"
+                className="flex-1 min-w-0 bg-transparent text-white/80 placeholder-white/40 pl-[5%] pr-2 py-2 text-sm sm:py-3 md:py-4 sm:text-base md:text-lg lg:text-xl font-serif focus:outline-none"
               />
               <button 
                 type="submit"
@@ -57,17 +82,10 @@ export default function HeroSection({ brandData }: HeroSectionProps) {
             </form>
           </Reveal>
 
-          {/* Main Headline - Centered with serif font */}
-          <Reveal trigger="mount" variant="fadeUp" delay={0.25} duration={2.0} y={16} initiallyVisible={false}>
-            <div className="text-center">
-              <h1 className="font-serif text-2xl sm:text-3xl md:text-[2.75rem] lg:text-[3.375rem] font-normal leading-relaxed text-white flex flex-wrap items-center justify-center gap-2 md:gap-3">
-                <span>Track your brand across</span>
-                <RotatingText 
-                  texts={['ChatGPT', 'Gemini', 'Grok', 'Perplexity']}
-                  rotationInterval={2500}
-                  className="font-serif text-2xl sm:text-3xl md:text-[2.75rem] lg:text-[3.375rem]"
-                />
-              </h1>
+          {/* Logo Ticker - Infinite scroll of trusted bands */}
+          <Reveal trigger="mount" variant="fadeIn" delay={0.5} duration={2.0} initiallyVisible={false}>
+            <div className="w-full mt-12 sm:mt-16 md:mt-20">
+              <LogoTicker />
             </div>
           </Reveal>
         </div>

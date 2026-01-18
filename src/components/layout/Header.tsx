@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button, CalendlyModal } from '@/components/ui';
+import { CalendlyModal } from '@/components/ui';
 
 export default function Header() {
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
@@ -26,14 +26,12 @@ export default function Header() {
           </Link>
           
           <div>
-            <Button 
-              variant="white" 
-              size="md"
-              className="px-4 py-2 sm:px-6 sm:py-2.5 text-xs sm:text-sm font-medium rounded-md"
+            <button
+              className="px-4 py-2 sm:px-6 sm:py-2.5 text-xs sm:text-sm font-medium rounded-md bg-[#e8e8e8] text-black hover:bg-gray-200 active:scale-95 transition-all duration-150"
               onClick={() => setIsCalendlyOpen(true)}
             >
               Learn More
-            </Button>
+            </button>
           </div>
         </div>
       </header>
