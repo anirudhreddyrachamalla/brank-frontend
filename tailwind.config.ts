@@ -83,6 +83,10 @@ const config: Config = {
           '0%': { backgroundPosition: '-200% center' },
           '100%': { backgroundPosition: '200% center' },
         },
+        'shine-wave-slow': {
+          '0%': { backgroundPosition: '-400% center' },
+          '100%': { backgroundPosition: '400% center' },
+        },
         fadeIn: {
           '0%': { opacity: '0', transform: 'translateY(10px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
@@ -98,6 +102,7 @@ const config: Config = {
       },
       animation: {
         'shine-wave': 'shine-wave 3s linear infinite',
+        'shine-wave-slow': 'shine-wave-slow 8s linear infinite',
         'fade-in': 'fadeIn 500ms ease-out forwards',
         'glow-pulse': 'glowPulse 2s ease-in-out infinite',
         'hover-lift': 'hoverLift 300ms ease forwards',

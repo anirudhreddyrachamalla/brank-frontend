@@ -38,12 +38,12 @@ export default function HeroSection({ brandData }: HeroSectionProps) {
             {/* Animated Logo */}
             <Reveal trigger="mount" variant="fadeUp" delay={0.1} duration={2.0} y={16} initiallyVisible={false}>
               <div className="mb-2 sm:mb-4">
-                 <div 
+                 <div
                    className="
                      w-32 h-12 sm:w-48 sm:h-16 md:w-64 md:h-20
-                     bg-[linear-gradient(to_right,white_0%,#22c55e_50%,white_100%)]
-                     bg-[length:200%_auto]
-                     animate-shine-wave
+                     bg-[linear-gradient(to_right,white_0%,white_45%,#22c55e_49%,#22c55e_51%,white_55%,white_100%)]
+                     bg-[length:400%_auto]
+                     animate-shine-wave-slow
                    "
                    style={{
                      maskImage: 'url(/images/brank-logo.svg)',
