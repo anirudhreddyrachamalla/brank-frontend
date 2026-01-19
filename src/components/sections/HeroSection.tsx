@@ -62,7 +62,7 @@ export default function HeroSection({ brandData }: HeroSectionProps) {
             <Reveal trigger="mount" variant="fadeUp" delay={0.25} duration={2.0} y={16} initiallyVisible={false}>
               <div className="w-full sm:w-[500px] md:w-[650px] lg:w-[800px] xl:w-[900px] overflow-visible">
                 <h1 className="font-sans text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium tracking-tight text-text-primary flex flex-col sm:flex-row sm:items-center items-center gap-2 md:gap-3 sm:pl-24 md:pl-32 lg:pl-40 overflow-visible">
-                  <span className="shrink-0 text-glow">Track your brand across</span>
+                  <span className="shrink-0 text-glow">Track any brand across</span>
                   <RotatingText
                     items={[
                       { name: 'ChatGPT', logo: '/images/LLMs/chatgpt.svg' },
@@ -93,7 +93,7 @@ export default function HeroSection({ brandData }: HeroSectionProps) {
             >
               <input
                 type="text"
-                placeholder="Get Brank's analysis of your brand."
+                placeholder="Get Brank's analysis of any brand."
                 value={brandName}
                 onChange={(e) => setBrandName(e.target.value)}
                 className="

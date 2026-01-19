@@ -946,7 +946,7 @@ export default function MainContentSection() {
               <SectionHeading>
                 Know what AI models{' '}
                 <br className="hidden sm:block" />
-                <span className="text-text-muted">think about you.</span>
+                <span className="text-text-muted">think about your brand.</span>
               </SectionHeading>
               <SectionText>
                 Track frequency across platforms. Understand your visibility in AI-generated responses and benchmark against competitors.
@@ -981,7 +981,7 @@ export default function MainContentSection() {
             <Badge>Visibility Intelligence</Badge>
             <SectionHeading>
               Know what AI models{' '}
-              <span className="text-text-muted">think about you.</span>
+              <span className="text-text-muted">think about your brand.</span>
             </SectionHeading>
             <SectionText>
               Track frequency across platforms. Understand your visibility in AI-generated responses and benchmark against competitors.
@@ -1082,8 +1082,8 @@ export default function MainContentSection() {
          ========================================== */}
       <section className="py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/[0.02]">
         <Reveal variant="fadeUp" duration={1.2} y={30}>
-          {/* Centered Header */}
-          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+          {/* Header */}
+          <div className="text-left sm:text-center max-w-3xl mx-auto mb-10 sm:mb-16">
             <Badge>Content Forge</Badge>
             <SectionHeading>
               Create AI-first content{' '}

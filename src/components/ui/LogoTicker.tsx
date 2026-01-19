@@ -27,9 +27,10 @@ function TickerItem({ logo }: { logo: { name: string; src: string } }) {
 
   return (
     <div
-      className="relative flex items-center justify-center shrink-0 h-20 sm:h-24 md:h-28 px-4"
+      className="relative flex items-center justify-center shrink-0 h-32 sm:h-24 md:h-28 px-4"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={() => setIsHovered(!isHovered)}
       style={{
         width: isHovered ? '240px' : '160px',
         transition: 'width 0.4s cubic-bezier(0.2, 0, 0.2, 1)',
@@ -54,15 +55,15 @@ function TickerItem({ logo }: { logo: { name: string; src: string } }) {
       </div>
 
       {/* Expanded Card View - Volumetric Design */}
-      <div
+    <div
         className={`
-          absolute inset-y-0 inset-x-0
+          absolute top-4 bottom-1 inset-x-0 sm:inset-y-0
           bg-bg-surface
           border border-subtle
           rounded-xl
           shadow-soft-tile-sm hover:shadow-soft-tile
           flex flex-col items-center justify-center
-          p-4
+          p-5 sm:p-4
           transition-all duration-300 ease-in-out
           overflow-hidden
           group/card
