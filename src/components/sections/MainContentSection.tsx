@@ -64,7 +64,7 @@ function FeatureListButton({ title, description, active, onClick }: FeatureListB
     >
       {/* Active LED indicator */}
       {active && (
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 sm:h-10 bg-green-500 rounded-r-full shadow-glow-green" />
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 sm:h-10 bg-brand-blue-500 rounded-r-full shadow-glow-cyan" />
       )}
 
       <h3 className={`text-base sm:text-lg font-medium mb-1 transition-colors duration-300 ${active ? 'text-text-primary' : 'text-text-muted group-hover:text-text-primary'}`}>
@@ -100,7 +100,7 @@ function MobileExpandableCard({ title, description, active, onClick, children }:
       <div className="p-3 relative">
         {/* Active LED indicator */}
         {active && (
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-green-500 rounded-r-full shadow-glow-green" />
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-brand-blue-500 rounded-r-full shadow-glow-cyan" />
         )}
 
         <div className="flex items-center justify-between">
@@ -420,17 +420,17 @@ function KnowScreenContent({ activeFeature }: KnowScreenContentProps) {
       </div>
 
       {/* Your Brand Row - Highlighted */}
-      <div className="mt-3 grid grid-cols-4 gap-2 sm:gap-3 bg-gradient-surface rounded-xl px-2 sm:px-3 py-2.5 sm:py-3 border border-green-500/20 items-center shadow-soft-tile-xs">
-        <span className="text-green-500 text-xs sm:text-sm font-medium">
+      <div className="mt-3 grid grid-cols-4 gap-2 sm:gap-3 bg-gradient-surface rounded-xl px-2 sm:px-3 py-2.5 sm:py-3 border border-brand-blue-500/20 items-center shadow-soft-tile-xs">
+        <span className="text-brand-blue-500 text-xs sm:text-sm font-medium">
           Your Brand
         </span>
-        <span className="text-green-400 text-xs sm:text-sm font-mono text-center font-medium">
+        <span className="text-brand-blue-400 text-xs sm:text-sm font-mono text-center font-medium">
           #7
         </span>
-        <span className="text-green-400 text-xs sm:text-sm font-mono text-center font-medium">
+        <span className="text-brand-blue-400 text-xs sm:text-sm font-mono text-center font-medium">
           #7
         </span>
-        <span className="text-green-400 text-xs sm:text-sm font-mono text-center font-medium">
+        <span className="text-brand-blue-400 text-xs sm:text-sm font-mono text-center font-medium">
           #7
         </span>
       </div>
@@ -446,8 +446,8 @@ function ImproveScreenContent({ activeFeature }: ImproveScreenContentProps) {
   // Source Analysis Screen - Sources with impact badges
   if (activeFeature === 0) {
     const sources = [
-      { url: 'https://techradar.com', value: '56%', impact: 'HIGH IMPACT', impactColor: 'bg-green-500', dotColor: 'bg-green-500' },
-      { url: 'https://cnet.com', value: '47%', impact: 'HIGH IMPACT', impactColor: 'bg-green-500', dotColor: 'bg-green-500' },
+      { url: 'https://techradar.com', value: '56%', impact: 'HIGH IMPACT', impactColor: 'bg-brand-blue-500', dotColor: 'bg-brand-blue-500' },
+      { url: 'https://cnet.com', value: '47%', impact: 'HIGH IMPACT', impactColor: 'bg-brand-blue-500', dotColor: 'bg-brand-blue-500' },
       { url: 'https://apple.com', value: '38%', impact: 'MEDIUM IMPACT', impactColor: 'bg-orange-500', dotColor: 'bg-orange-500' },
       { url: 'https://samsung.com', value: '35.5%', impact: 'MEDIUM IMPACT', impactColor: 'bg-orange-500', dotColor: 'bg-orange-500' },
       { url: 'https://theverge.com', value: '25%', impact: 'LOW IMPACT', impactColor: 'bg-gray-500', dotColor: 'bg-gray-400' },
@@ -557,17 +557,17 @@ function ImproveScreenContent({ activeFeature }: ImproveScreenContentProps) {
       </div>
 
       {/* Your Brand Row - Highlighted */}
-      <div className="mt-3 grid grid-cols-4 gap-2 sm:gap-3 bg-gradient-surface rounded-xl px-2 sm:px-3 py-2.5 sm:py-3 border border-green-500/20 items-center shadow-soft-tile-xs">
-        <span className="text-green-500 text-xs sm:text-sm font-medium">
+      <div className="mt-3 grid grid-cols-4 gap-2 sm:gap-3 bg-gradient-surface rounded-xl px-2 sm:px-3 py-2.5 sm:py-3 border border-brand-blue-500/20 items-center shadow-soft-tile-xs">
+        <span className="text-brand-blue-500 text-xs sm:text-sm font-medium">
           Your Brand
         </span>
-        <span className="text-green-400 text-xs sm:text-sm font-mono text-center font-medium">
+        <span className="text-brand-blue-400 text-xs sm:text-sm font-mono text-center font-medium">
           61%
         </span>
-        <span className="text-green-400 text-xs sm:text-sm font-mono text-center font-medium">
+        <span className="text-brand-blue-400 text-xs sm:text-sm font-mono text-center font-medium">
           58%
         </span>
-        <span className="text-green-400 text-xs sm:text-sm font-mono text-center font-medium">
+        <span className="text-brand-blue-400 text-xs sm:text-sm font-mono text-center font-medium">
           64%
         </span>
       </div>
@@ -972,7 +972,7 @@ export default function MainContentSection() {
                   <KnowScreenContent activeFeature={knowActiveFeature} />
                 </ConsoleScreen>
               </div>
-              <div className="absolute -inset-10 bg-green-500/10 blur-[100px] -z-10 rounded-full pointer-events-none" />
+              <div className="absolute -inset-10 bg-brand-blue-500/10 blur-[100px] -z-10 rounded-full pointer-events-none" />
             </div>
           </div>
 
