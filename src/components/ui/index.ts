@@ -1,6 +1,8 @@
 export { Button } from './Button';
 export { CalendlyModal } from './CalendlyModal';
 export { EmailModal } from './EmailModal';
+export { LearnMoreModal } from './LearnMoreModal';
+export { default as LogoTicker } from './LogoTicker';
 export { MetricCard } from './MetricCard';
 export { ProModal } from './ProModal';
 export * from './SlowProgressBar';

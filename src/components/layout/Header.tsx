@@ -28,10 +28,10 @@ export default function Header() {
 
           {/* Navigation & CTA */}
           <div className="flex items-center gap-6 sm:gap-8">
-            {/* Pricing Link - Hidden on mobile */}
+            {/* Pricing Link */}
             <Link
               href="/pricing"
-              className="hidden sm:block text-text-muted hover:text-text-primary transition-colors duration-300 text-sm font-medium"
+              className="text-text-muted hover:text-text-primary transition-colors duration-300 text-sm font-medium"
             >
               Pricing
             </Link>
@@ -51,7 +51,7 @@ export default function Header() {
               "
               onClick={() => setIsModalOpen(true)}
             >
-              Learn More
+              Analyse your brand
             </button>
           </div>
         </div>

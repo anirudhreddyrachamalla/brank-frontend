@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Reveal, RotatingText } from '@/components/ui';
+import { Reveal, RotatingText, LearnMoreModal } from '@/components/ui';
 import LogoTicker from '@/components/ui/LogoTicker';
 import { LandingPageResponse } from '@/types/backend';
 
@@ -12,19 +11,12 @@ interface HeroSectionProps {
 
 export default function HeroSection({ brandData }: HeroSectionProps) {
   const [brandName, setBrandName] = useState('');
-  const router = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (brandName.trim()) {
-      const brand = brandName.trim();
-
-      // Fire-and-forget prefetch to warm backend cache
-      fetch(`/api/prefetch-metric?website=${encodeURIComponent(brand)}`).catch(() => {
-        // Silently ignore prefetch errors
-      });
-
-      router.push(`/progress?brand=${encodeURIComponent(brand)}`);
+      setIsModalOpen(true);
     }
   };
 
@@ -41,7 +33,7 @@ export default function HeroSection({ brandData }: HeroSectionProps) {
                  <div
                    className="
                      w-32 h-12 sm:w-48 sm:h-16 md:w-64 md:h-20
-                     bg-[linear-gradient(to_right,white_0%,white_45%,#00A8FF_49%,#00A8FF_51%,white_55%,white_100%)]
+                     bg-[linear-gradient(to_right,white_0%,white_45%,#22C55E_49%,#22C55E_51%,white_55%,white_100%)]
                      bg-[length:400%_auto]
                      animate-shine-wave-slow
                    "
@@ -135,6 +127,12 @@ export default function HeroSection({ brandData }: HeroSectionProps) {
           </Reveal>
         </div>
       </div>
+
+      <LearnMoreModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        initialBrandName={brandName}
+      />
     </section>
   );
 }

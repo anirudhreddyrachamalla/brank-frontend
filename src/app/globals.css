@@ -36,11 +36,11 @@
   --shadow-dark: rgba(0, 0, 0, 0.9);
   --rim-highlight: rgba(255, 255, 255, 0.08);
 
-  /* Design System: Accent Colors (Cyan-Blue Theme) */
-  --accent-success: #00A8FF;
+  /* Design System: Accent Colors (Green Theme) */
+  --accent-success: #22C55E;
   --accent-warning: #F59E0B;
   --accent-error: #EF4444;
-  --accent-info: #33AAFF;
+  --accent-info: #3B82F6;
 }
 
 body {
@@ -162,11 +162,11 @@ body {
    ============================================ */
 
 .shadow-glow-cyan {
-  box-shadow: 0 0 10px rgba(0, 168, 255, 0.6);
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
 }
 
 .shadow-glow-cyan-strong {
-  box-shadow: 0 0 15px rgba(0, 168, 255, 0.8);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.8);
 }
 
 .shadow-glow-white {
@@ -190,7 +190,7 @@ body {
   height: 8px;
   border-radius: 9999px;
   background-color: var(--accent-success);
-  box-shadow: 0 0 10px rgba(0, 168, 255, 0.6);
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
 }
 
 .led-indicator-pulse {
@@ -396,13 +396,13 @@ body {
   }
 }
 
-/* Design System Animation - Glow Pulse (Cyan-Blue Theme) */
+/* Design System Animation - Glow Pulse (Green Theme) */
 @keyframes glowPulse {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(0, 168, 255, 0.6);
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
   }
   50% {
-    box-shadow: 0 0 20px rgba(0, 168, 255, 0.8);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.8);
   }
 }
 

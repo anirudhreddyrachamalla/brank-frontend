@@ -153,7 +153,7 @@ function DesktopTickerItem({ logo }: { logo: { name: string; src: string } }) {
         `}
       >
         {/* Left accent LED indicator */}
-        <div className="absolute left-0 top-0 bottom-0 w-1 bg-brand-blue-700" />
+        <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#22C55E]" />
 
         {/* Small Logo at Top */}
         <div className="relative w-full h-5 mb-1.5 shrink-0 z-10">
@@ -163,22 +163,22 @@ function DesktopTickerItem({ logo }: { logo: { name: string; src: string } }) {
         {/* Insights List */}
         <div className="w-full flex flex-col gap-1 z-10 pl-2">
           <p className="text-xs leading-relaxed text-left">
-            <span className="font-semibold text-brand-blue-500">{insights.mentions.percent}%</span>
+            <span className="font-semibold text-[#22C55E]">{insights.mentions.percent}%</span>
             <span className="text-text-muted"> Mentions</span>
             <span className="text-text-secondary"> · {insights.mentions.phrase}</span>
           </p>
           <p className="text-xs leading-relaxed text-left">
-            <span className="font-semibold text-brand-blue-500">{insights.citations.percent}%</span>
+            <span className="font-semibold text-[#22C55E]">{insights.citations.percent}%</span>
             <span className="text-text-muted"> Citations</span>
             <span className="text-text-secondary"> · {insights.citations.phrase}</span>
           </p>
           <p className="text-xs leading-relaxed text-left">
-            <span className="font-semibold text-brand-blue-500">{insights.sentiment.percent}%</span>
+            <span className="font-semibold text-[#22C55E]">{insights.sentiment.percent}%</span>
             <span className="text-text-muted"> Sentiment</span>
             <span className="text-text-secondary"> · {insights.sentiment.phrase}</span>
           </p>
           <p className="text-xs leading-relaxed text-left">
-            <span className="font-semibold text-brand-blue-500">{insights.score.percent}%</span>
+            <span className="font-semibold text-[#22C55E]">{insights.score.percent}%</span>
             <span className="text-text-muted"> Score</span>
             <span className="text-text-secondary"> · {insights.score.phrase}</span>
           </p>
@@ -248,7 +248,7 @@ function MobileCard({ logo }: { logo: { name: string; src: string } }) {
       "
     >
       {/* Left accent LED indicator */}
-      <div className="absolute left-0 top-0 bottom-0 w-1 bg-brand-blue-700 rounded-l-xl" />
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#22C55E] rounded-l-xl" />
 
       {/* Logo */}
       <div className="relative w-full h-8 mb-3 shrink-0">
@@ -258,22 +258,22 @@ function MobileCard({ logo }: { logo: { name: string; src: string } }) {
       {/* Insights List */}
       <div className="w-full flex flex-col gap-2 pl-3">
         <p className="text-sm leading-relaxed text-left">
-          <span className="font-semibold text-brand-blue-500">{insights.mentions.percent}%</span>
+          <span className="font-semibold text-[#22C55E]">{insights.mentions.percent}%</span>
           <span className="text-text-muted"> Mentions</span>
           <span className="text-text-secondary"> · {insights.mentions.phrase}</span>
         </p>
         <p className="text-sm leading-relaxed text-left">
-          <span className="font-semibold text-brand-blue-500">{insights.citations.percent}%</span>
+          <span className="font-semibold text-[#22C55E]">{insights.citations.percent}%</span>
           <span className="text-text-muted"> Citations</span>
           <span className="text-text-secondary"> · {insights.citations.phrase}</span>
         </p>
         <p className="text-sm leading-relaxed text-left">
-          <span className="font-semibold text-brand-blue-500">{insights.sentiment.percent}%</span>
+          <span className="font-semibold text-[#22C55E]">{insights.sentiment.percent}%</span>
           <span className="text-text-muted"> Sentiment</span>
           <span className="text-text-secondary"> · {insights.sentiment.phrase}</span>
         </p>
         <p className="text-sm leading-relaxed text-left">
-          <span className="font-semibold text-brand-blue-500">{insights.score.percent}%</span>
+          <span className="font-semibold text-[#22C55E]">{insights.score.percent}%</span>
           <span className="text-text-muted"> Score</span>
           <span className="text-text-secondary"> · {insights.score.phrase}</span>
         </p>

@@ -5,18 +5,17 @@ import React, { useState, useEffect, useRef } from 'react';
 interface LearnMoreModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialBrandName?: string;
 }
 
 interface FormData {
   brandName: string;
-  website: string;
   email: string;
 }
 
-const LearnMoreModal: React.FC<LearnMoreModalProps> = ({ isOpen, onClose }) => {
+const LearnMoreModal: React.FC<LearnMoreModalProps> = ({ isOpen, onClose, initialBrandName }) => {
   const [formData, setFormData] = useState<FormData>({
-    brandName: '',
-    website: '',
+    brandName: initialBrandName || '',
     email: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,12 +26,19 @@ const LearnMoreModal: React.FC<LearnMoreModalProps> = ({ isOpen, onClose }) => {
   // Reset form when modal closes
   useEffect(() => {
     if (!isOpen) {
-      setFormData({ brandName: '', website: '', email: '' });
+      setFormData({ brandName: initialBrandName || '', email: '' });
       setIsSubmitted(false);
       setIsSubmitting(false);
       setError(null);
     }
-  }, [isOpen]);
+  }, [isOpen, initialBrandName]);
+
+  // Update brand name when initialBrandName changes and modal is open
+  useEffect(() => {
+    if (isOpen && initialBrandName) {
+      setFormData(prev => ({ ...prev, brandName: initialBrandName }));
+    }
+  }, [isOpen, initialBrandName]);
 
   // Close on escape key
   useEffect(() => {
@@ -65,10 +71,6 @@ const LearnMoreModal: React.FC<LearnMoreModalProps> = ({ isOpen, onClose }) => {
   const validateForm = (): boolean => {
     if (!formData.brandName.trim()) {
       setError('Please enter your brand name');
-      return false;
-    }
-    if (!formData.website.trim()) {
-      setError('Please enter your website');
       return false;
     }
     if (!formData.email.trim()) {
@@ -157,13 +159,13 @@ const LearnMoreModal: React.FC<LearnMoreModalProps> = ({ isOpen, onClose }) => {
         </button>
 
         {/* Left accent */}
-        <div className="absolute left-0 top-0 bottom-0 w-1 bg-brand-blue-700 rounded-l-2xl" />
+        <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#22C55E] rounded-l-2xl" />
 
         {isSubmitting ? (
           /* Loading State */
           <div className="text-center py-12">
             <div className="w-16 h-16 mx-auto mb-6">
-              <svg className="w-full h-full animate-spin text-brand-blue-500" fill="none" viewBox="0 0 24 24">
+              <svg className="w-full h-full animate-spin text-[#22C55E]" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
               </svg>
@@ -173,8 +175,8 @@ const LearnMoreModal: React.FC<LearnMoreModalProps> = ({ isOpen, onClose }) => {
         ) : isSubmitted ? (
           /* Success State */
           <div className="text-center py-8">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-brand-blue-500/20 flex items-center justify-center">
-              <svg className="w-8 h-8 text-brand-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#22C55E]/20 flex items-center justify-center">
+              <svg className="w-8 h-8 text-[#22C55E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
@@ -230,33 +232,7 @@ const LearnMoreModal: React.FC<LearnMoreModalProps> = ({ isOpen, onClose }) => {
                     text-text-primary
                     placeholder-text-subtle
                     shadow-deep-field-sm
-                    focus:outline-none focus:border-brand-blue-700/50
-                    transition-colors duration-200
-                  "
-                />
-              </div>
-
-              {/* Website */}
-              <div>
-                <label htmlFor="website" className="block text-sm text-text-secondary mb-1.5">
-                  Website
-                </label>
-                <input
-                  type="text"
-                  id="website"
-                  name="website"
-                  value={formData.website}
-                  onChange={handleChange}
-                  placeholder="e.g. acme.com"
-                  className="
-                    w-full px-4 py-3
-                    bg-bg-base
-                    border border-subtle
-                    rounded-lg
-                    text-text-primary
-                    placeholder-text-subtle
-                    shadow-deep-field-sm
-                    focus:outline-none focus:border-brand-blue-700/50
+                    focus:outline-none focus:border-[#22C55E]/50
                     transition-colors duration-200
                   "
                 />
@@ -282,7 +258,7 @@ const LearnMoreModal: React.FC<LearnMoreModalProps> = ({ isOpen, onClose }) => {
                     text-text-primary
                     placeholder-text-subtle
                     shadow-deep-field-sm
-                    focus:outline-none focus:border-brand-blue-700/50
+                    focus:outline-none focus:border-[#22C55E]/50
                     transition-colors duration-200
                   "
                 />
@@ -304,8 +280,8 @@ const LearnMoreModal: React.FC<LearnMoreModalProps> = ({ isOpen, onClose }) => {
                 text-sm font-medium
                 rounded-lg
                 text-text-primary
-                bg-brand-blue-700
-                hover:bg-brand-blue-600
+                bg-[#22C55E]
+                hover:bg-[#16A34A]
                 disabled:opacity-50 disabled:cursor-not-allowed
                 active:scale-[0.98]
                 transition-all duration-300
