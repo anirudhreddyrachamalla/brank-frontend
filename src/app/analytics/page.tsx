@@ -399,7 +399,7 @@ export default async function AnalyticsPage({
             <div className="bg-bg-surface rounded-xl shadow-soft-tile-sm border border-subtle p-4 sm:p-6 md:p-12 ">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
                 {/* Left Side: Title + AI Insight */}
-                <div className="flex flex-col bg-bg-depressed -m-4 p-4 sm:-m-6 sm:p-6 md:-m-12 md:p-12 md:mr-0 md:pr-6 md:justify-between rounded-xl md:rounded-l-xl md:rounded-r-none shadow-deep-field">
+                <div className="flex flex-col bg-bg-depressed -m-4 p-4 sm:-m-6 sm:p-6 md:-m-12 md:p-12 md:pr-6 md:justify-between rounded-xl md:rounded-l-xl md:rounded-r-none shadow-deep-field">
                   {/* Title with Info Icon */}
                   <div className="flex items-center gap-1.5 sm:gap-2 mb-4 sm:mb-6 md:mb-8">
                     <h3 className="text-text-primary text-lg sm:text-xl md:text-2xl font-normal leading-none">

@@ -72,22 +72,22 @@ export default function Footer() {
                       Contact us
                     </button>
                   </li>
-                  <li>
+                  {/* <li>
                     <a
                       href="/pricing"
                       className="hover:text-text-primary transition-colors duration-300"
                     >
                       Pricing
                     </a>
-                  </li>
-                  <li>
+                  </li> */}
+                  {/* <li>
                     <a
                       href="#"
                       className="hover:text-text-primary transition-colors duration-300"
                     >
                       Brand Kit
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
 
@@ -115,20 +115,20 @@ export default function Footer() {
                       LinkedIn
                     </a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a
                       href="#"
                       className="hover:text-text-primary transition-colors duration-300"
                     >
                       Instagram
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
 
               </div>
 
-              {/* Legal */}
-              <div>
+              {/* Legal - commented out */}
+              {/* <div>
                 <h4 className="text-text-primary font-medium mb-3 sm:mb-4 text-xs sm:text-sm">
                   Legal
                 </h4>
@@ -158,7 +158,7 @@ export default function Footer() {
                     </a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
 
             </div>
 
@@ -179,7 +179,7 @@ export default function Footer() {
                   >
                     <Linkedin className="w-5 h-5" />
                   </a>
-                  <a
+                  {/* <a
                     href="#"
                     className="text-text-muted hover:text-text-primary transition-colors duration-300"
                     aria-label="Instagram"
@@ -192,7 +192,7 @@ export default function Footer() {
                     aria-label="Telegram"
                   >
                     <Send className="w-5 h-5" />
-                  </a>
+                  </a> */}
                 </div>
               </div>
 
