@@ -3,6 +3,31 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { LandingPageResponse } from '@/types/backend';
+
+const WEBSITE_TO_API_KEY: Record<string, keyof LandingPageResponse> = {
+  'asics.com': 'asics',
+  'coinbase.com': 'coinbase',
+  'cult.fit': 'cult.fit',
+  'decathlon.com': 'decathlon',
+  'leetcode.com': 'leetcode',
+  'nothing.tech': 'nothing',
+  'zerodha.com': 'zerodha',
+};
+
+function getBrandMetrics(
+  website: string,
+  brandData: LandingPageResponse | undefined,
+): { mentions: number; sentiment: number } | undefined {
+  if (!brandData) return undefined;
+  const key = WEBSITE_TO_API_KEY[website];
+  if (!key) return undefined;
+  const metrics = brandData[key];
+  return {
+    mentions: Math.round(metrics.mentions),
+    sentiment: Math.round(metrics.sentiment),
+  };
+}
 
 const logos = [
   { name: 'Asics', src: '/images/brand-logos/Asics.svg', website: 'asics.com' },
@@ -178,7 +203,7 @@ interface BrandInsights {
 }
 
 // Desktop Ticker Item - hover to expand, click to navigate
-function DesktopTickerItem({ logo }: { logo: { name: string; src: string; website: string } }) {
+function DesktopTickerItem({ logo, brandMetrics }: { logo: { name: string; src: string; website: string }; brandMetrics?: { mentions: number; sentiment: number } }) {
   const router = useRouter();
   const [insights, setInsights] = useState<BrandInsights>({
     mentions: { phrase: '', percent: 0 },
@@ -195,14 +220,14 @@ function DesktopTickerItem({ logo }: { logo: { name: string; src: string; websit
     setInsights({
       mentions: {
         phrase: getRandomPhrase(mentionPhrases),
-        percent: Math.floor(Math.random() * 25) + 65,
+        percent: brandMetrics?.mentions ?? Math.floor(Math.random() * 25) + 65,
       },
       sentiment: {
         phrase: getRandomPhrase(sentimentPhrases),
-        percent: Math.floor(Math.random() * 20) + 75,
+        percent: brandMetrics?.sentiment ?? Math.floor(Math.random() * 20) + 75,
       },
     });
-  }, []);
+  }, [brandMetrics]);
 
   const handleClick = () => {
     router.push(`/progress?brand=${encodeURIComponent(logo.website)}`);
@@ -301,7 +326,7 @@ function DesktopTickerItem({ logo }: { logo: { name: string; src: string; websit
 }
 
 // Mobile Card - updated to match desktop style
-function MobileCard({ logo }: { logo: { name: string; src: string; website: string } }) {
+function MobileCard({ logo, brandMetrics }: { logo: { name: string; src: string; website: string }; brandMetrics?: { mentions: number; sentiment: number } }) {
   const router = useRouter();
   const [insights, setInsights] = useState<BrandInsights>({
     mentions: { phrase: '', percent: 0 },
@@ -317,14 +342,14 @@ function MobileCard({ logo }: { logo: { name: string; src: string; website: stri
     setInsights({
       mentions: {
         phrase: getRandomPhrase(mentionPhrases),
-        percent: Math.floor(Math.random() * 25) + 65,
+        percent: brandMetrics?.mentions ?? Math.floor(Math.random() * 25) + 65,
       },
       sentiment: {
         phrase: getRandomPhrase(sentimentPhrases),
-        percent: Math.floor(Math.random() * 20) + 75,
+        percent: brandMetrics?.sentiment ?? Math.floor(Math.random() * 20) + 75,
       },
     });
-  }, []);
+  }, [brandMetrics]);
 
   const handleClick = () => {
     router.push(`/progress?brand=${encodeURIComponent(logo.website)}`);
@@ -386,7 +411,11 @@ function MobileCard({ logo }: { logo: { name: string; src: string; website: stri
   );
 }
 
-export default function LogoTicker() {
+interface LogoTickerProps {
+  brandData?: LandingPageResponse;
+}
+
+export default function LogoTicker({ brandData }: LogoTickerProps) {
   return (
     <>
       {/* Desktop Ticker - hidden on mobile */}
@@ -411,7 +440,7 @@ export default function LogoTicker() {
             ...logos,
             ...logos,
           ].map((logo, index) => (
-            <DesktopTickerItem key={`${logo.name}-${index}`} logo={logo} />
+            <DesktopTickerItem key={`${logo.name}-${index}`} logo={logo} brandMetrics={getBrandMetrics(logo.website, brandData)} />
           ))}
         </div>
       </div>
@@ -425,7 +454,7 @@ export default function LogoTicker() {
         {/* Scrolling container */}
         <div className="flex w-fit animate-marquee items-center gap-4 py-2">
           {[...logos, ...logos, ...logos, ...logos].map((logo, index) => (
-            <MobileCard key={`mobile-${logo.name}-${index}`} logo={logo} />
+            <MobileCard key={`mobile-${logo.name}-${index}`} logo={logo} brandMetrics={getBrandMetrics(logo.website, brandData)} />
           ))}
         </div>
       </div>
