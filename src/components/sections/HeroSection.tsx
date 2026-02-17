@@ -199,7 +199,7 @@ export default function HeroSection({ brandData }: HeroSectionProps) {
             initiallyVisible={false}
           >
             <div className="w-full mt-20 sm:mt-24 md:mt-32">
-              <LogoTicker />
+              <LogoTicker brandData={brandData} />
             </div>
           </Reveal>
         </div>

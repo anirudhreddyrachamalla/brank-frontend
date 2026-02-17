@@ -74,9 +74,15 @@ export interface BackendMetricResponse {
   website: string;
 }
 
+export interface PromptResponse {
+  answer: string;
+  llm_name: string;
+}
+
 export interface PromptItem {
   prompt_id: string;
   prompt: string;
+  responses?: PromptResponse[];
 }
 
 export interface PromptsPagination {
@@ -93,13 +99,18 @@ export interface PromptsResponse {
   pagination: PromptsPagination;
 }
 
+export interface LandingPageBrandMetrics {
+  mentions: number;
+  sentiment: number;
+}
+
 export interface LandingPageResponse {
-  asics: number;
-  coinbase: number;
-  'cult.fit': number;
-  decathlon: number;
-  leetcode: number;
-  nothing: number;
-  zerodha: number;
+  asics: LandingPageBrandMetrics;
+  coinbase: LandingPageBrandMetrics;
+  'cult.fit': LandingPageBrandMetrics;
+  decathlon: LandingPageBrandMetrics;
+  leetcode: LandingPageBrandMetrics;
+  nothing: LandingPageBrandMetrics;
+  zerodha: LandingPageBrandMetrics;
 }
 
