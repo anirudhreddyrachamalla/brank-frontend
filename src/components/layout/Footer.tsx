@@ -80,6 +80,14 @@ export default function Footer() {
                       Contact us
                     </button>
                   </li>
+                  <li>
+                    <a
+                      href="/faq"
+                      className="hover:text-text-primary transition-colors duration-300"
+                    >
+                      FAQ
+                    </a>
+                  </li>
                   {/* <li>
                     <a
                       href="/pricing"

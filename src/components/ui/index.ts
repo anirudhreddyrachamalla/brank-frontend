@@ -1,6 +1,7 @@
 export { Button } from './Button';
 export { CalendlyModal } from './CalendlyModal';
 export { EmailModal } from './EmailModal';
+export { FAQAccordionItem } from './FAQAccordionItem';
 export { LearnMoreModal } from './LearnMoreModal';
 export { default as LogoTicker } from './LogoTicker';
 export { MetricCard } from './MetricCard';
